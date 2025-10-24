@@ -1,151 +1,276 @@
-QSOLKCB: Quantum-Secure Optical/Laser-Incorporated Meme Company (QSOL-IMC Labs)
+# `fullstack.sh` + `lint.yml`
 
-Welcome to QSOLKCB, the stealth GitHub nerve center for QSOL-IMC — where quantum error correction meets meme-fueled anarchy to roast scammers into a superposition of fail.
-Born from EmergentMonk
-’s wizardry, we’re engineering the future of secure, hilarious anti-scam tech: Qiskit-powered randomness, laser-precise burns, and multimodal chaos that turns spam calls into viral gold.
-#fcukscammers
+> *The “It Works On My Machine” Industrial-Strength Starter Pack*
+> Minimal yak-shaving. Maximal vibes. 💅🐍🎛️
 
-🚀 Mission: Meme the Void
+<p align="center">
+  <img alt="Bash" src="https://img.shields.io/badge/Bash-4%2B-222?logo=gnu-bash&logoColor=white">
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-supported-111?logo=linux&logoColor=white">
+  <img alt="macOS" src="https://img.shields.io/badge/macOS-supported-000?logo=apple&logoColor=white">
+  <img alt="PipeWire/JACK" src="https://img.shields.io/badge/Audio-PipeWire%2FJACK-700080">
+  <img alt="Conda/Miniforge" src="https://img.shields.io/badge/Conda-Miniforge-43B02A?logo=anaconda&logoColor=white">
+  <img alt="CI Lint" src="https://img.shields.io/badge/CI-ShellCheck%20%2B%20shfmt-0a0">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-blue">
+</p>
 
-QSOLKCB isn’t just code — it’s a quantum meme revolution. We fuse:
+---
 
-Quantum Security – Fault-tolerant QEC (NISQ-to-FTQC magic from qiskit-qec-wrappers
-) for unhackable spam hashes.
+## Table of Contents
 
-Optical/Laser Kernel – Photon-entropy RNG for unpredictable prick roasts (our nod to laser-comms toolkits).
+* [✨ What You Get](#-what-you-get)
+* [🚀 TL;DR Quickstart](#-tldr-quickstart)
+* [🧠 Supported Platforms](#-supported-platforms)
+* [🧩 Script Anatomy (fun tour)](#-script-anatomy-fun-tour)
+* [🔧 Config You’ll Actually Touch](#-config-youll-actually-touch)
+* [🛠️ CI: `lint.yml` (ShellCheck + shfmt)](#️-ci-lintyml-shellcheck--shfmt)
+* [🆘 Troubleshooting (real talk)](#-troubleshooting-real-talk)
+* [🙌 Pro Tips](#-pro-tips)
+* [🧪 Local Dev Niceties](#-local-dev-niceties)
+* [📝 Changelog Seeds](#-changelog-seeds)
+* [🧾 License](#-license)
 
-Meme Company Vibes – Doge-tier taunts, Rickroll loops, and 7-11/Wojak zingers to waste scammer time.
+---
 
-Multimodal Magic – Audio-reactive trolling inspired by proof-qec-dna-rubiks-audio-reactive-viz
-, turning scammer chatter into waveform-synced roast radio.
+## ✨ What You Get
 
-Flagship Drop: lambroast.py
+* **One command** to stand up a **full-stack audio-science/ML/quantum** dev machine.
+* **PipeWire/JACK** + sensible low-latency sys tuning.
+* **Miniforge (Conda)** env with scientific, audio/DSP, and quantum libs.
+* **PyTorch** auto-picks CPU vs CUDA if it detects NVIDIA.
+* Optional **GitHub Copilot CLI** bootstrapped in `~/dev` (terminal side-kick unlocked).
+* **CI lint** that roasts bad shell and formats the rest — automatically.
 
-The Quantum Meme Roaster.
-A savage S23 bot that auto-trolls verified spam with quantum-random burns:
+> **Meme mode:**
+> **Boss:** “Can you document the setup?”
+> **You:** `./fullstack.sh && git push`
+> **Boss:** “You’re getting a bigger monitor.”
 
-“Your scam’s a sad Pepe in a 7-11 void.”
+---
 
-TCPA-compliant, locked to Android’s BlockedNumberContract, and ready to entangle fraudsters.
+## 🚀 TL;DR Quickstart
 
-wow
- such scam
-   very fail
-     much roast
-/_/\
-( o.o ) 
- > ^ < 
+```bash
+# 1) Make it executable
+chmod +x ./fullstack.sh
 
+# 2) Run it (Linux recommends sudo; macOS prompts as needed)
+sudo ./fullstack.sh
+# or
+./fullstack.sh
+```
 
-Doge says: Your IRS pitch decohered harder than a qubit in a microwave.
+<details>
+<summary><b>What happens next?</b></summary>
 
-📁 Repos & Tools
+* Detects your package manager (`apt`, `dnf`, `pacman`, or `brew`)
+* Installs tooling + audio stack
+* Tunes system (TRIM, sysctl, CPU governor where possible)
+* Installs **Miniforge** → sets up **mamba**
+* Creates **qecstack** env (numpy/scipy/pandas/numba/jupyterlab, librosa/pyaudio/opencv, qutip/qiskit/cirq, etc.)
+* Picks **PyTorch** CPU/CUDA based on hardware
+* Adds threads vars to your `~/.bashrc`
+* Optionally installs **Copilot CLI** (`copilot /login`)
 
-LambRoaster
- – Home of lambroast.py, quantum prankster extraordinaire.
+</details>
 
-qiskit-qec-wrappers
- – Core QEC stack for robust meme generation.
+> [!NOTE]
+> No network? It won’t throw a tantrum — it just skips downloads and keeps going.
 
-proof-qec-dna-rubiks-audio-reactive-viz
- – Audio visualization backbone.
+---
 
-Coming Soon – QSOL-IMC API for meme-secure VoIP (Twilio + laser entropy).
+## 🧠 Supported Platforms
 
-🛠 Quick Start (S23/Termux Vibes)
-1. Clone & Install
-git clone https://github.com/QSOLKCB/LambRoaster.git
-cd LambRoaster
-pip install -r requirements.txt  # qiskit, numpy, etc.
+* **Debian/Ubuntu** (`apt`)
+* **Fedora/RHEL** (`dnf`)
+* **Arch/Manjaro** (`pacman`)
+* **macOS** (`brew`) — JACK/FFmpeg/Sox covered; PipeWire is “some assembly required.”
 
-2. Run the Roast
-python lambroast.py
-# Mock inbound: +1-555-LAMBSCAM
-# Enter scammer BS: "Your warranty expired!"
-# Output: Quantum burn + Doge ASCII. 🔥
+> [!TIP]
+> Running in a container or a minimal VM? Missing `sudo` won’t kill the run — the script autostubs a no-op `sudo()` so non-privileged steps still pass under `set -euo pipefail`.
 
-3. Test Spam Lock
+---
 
-Only verified numbers get the lamb treatment — manual callbacks, one-shot rule.
+## 🧩 Script Anatomy (fun tour)
 
-Dependencies (requirements.txt):
+```text
+fullstack.sh
+├─ Shebang:  #!/usr/bin/env bash   (portable, not hard-coded)
+├─ Safety:   set -euo pipefail     (fail fast, no unbound vars, pipe safety)
+├─ User:     figures out $SUDO_USER → falls back to $USER
+├─ sudo():   polyfill if absent; keeps strict mode happy
+├─ log():    tasteful green/bold logs you can read on a Monday
+├─ detect_pkg_mgr(): apt | dnf | pacman | brew | unknown
+├─ install_packages(): wrapper over native PM (refresh + batch install)
+├─ Base toolchain: compilers, cmake, ninja, git, ripgrep, fd, bat, exa…
+├─ Audio stack: PipeWire/JACK (+ qjackctl/alsa-utils/sox/ffmpeg)
+├─ Tuning:   fstrim.timer, sysctl(99-audio.conf), CPU governor (if possible)
+├─ Miniforge: OS/arch-aware installer; network reachability checks
+├─ Conda env: mamba + qecstack (sci/audio/quantum + PyTorch CPU/CUDA)
+├─ Threads:  OMP_NUM_THREADS / MKL_NUM_THREADS → ~/.bashrc
+└─ Copilot:  npm/brew install; `copilot /login` in ~/dev
+```
 
-qiskit==0.46.0
-qiskit-aer==0.15.0
-numpy==1.26.4
-# Whisper/Twilio optional for STT/VoIP
+> [!IMPORTANT]
+> We use **built-ins** whenever possible (e.g., lowercase transforms, core counts via `nproc`/`getconf`) to avoid pointless subprocesses and keep this zippy.
 
-🧰 Python Virtual Environment Setup (Arch Linux)
+---
 
-Arch protects its system Python, so use an isolated environment for installs.
+## 🔧 Config You’ll Actually Touch
 
-1. Install Virtualenv
-sudo pacman -S python-virtualenv
+* **Base packages** — trim or add in the toolchain section. Keep it lean.
+* **Audio** — swap JACK flavors, add/remove Pulse bridges, ditch `qjackctl` if you CLI all day.
+* **Sys tuning** — comment TRIM/sysctl if it’s a laptop you care about; pick `powersave` governor if needed.
+* **Conda env** — pin versions/channels, add/remove libs, then re-lock:
 
+  ```bash
+  conda env export | sed '/^prefix:/d' > ~/qec_env_<os>.yaml
+  ```
+* **Copilot CLI** — lock a specific version via npm/brew or remove entirely.
 
-Expected prompt:
+> **Meme mode:**
+> “One does not simply… manually reinstall fifty packages for a new laptop.” — You, before this repo
 
-Packages (3) python-distlib ... python-platformdirs ... python-virtualenv ...
-:: Proceed with installation? [Y/n] Y
+---
 
+## 🛠️ CI: `lint.yml` (ShellCheck + shfmt)
 
-Once installed, ConditionNeedsUpdate will arm automatically.
+> Clean shell is fast shell. And future-you will actually understand it.
 
-2. Create a Virtual Environment
+**What it does**
 
-Inside your project directory:
+* Runs on every **push**/**PR** that touches `*.sh`
+* **ShellCheck**: finds foot-guns (unquoted vars, unsafe globs, bashisms)
+* **shfmt**: keeps spacing + `case` indentation ✨ consistent
+* Comments on PRs so reviewers can roast the code and not the author
 
-python -m venv venv
+**Workflow file** → `.github/workflows/lint.yml`:
 
-3. Activate It
-source venv/bin/activate
+```yaml
+name: Shell Lint
 
+on:
+  push:
+    paths: ['**/*.sh']
+  pull_request:
+    paths: ['**/*.sh']
 
-You’ll see your prompt change to:
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run ShellCheck + shfmt
+        uses: luizm/action-sh-checker@master
+        with:
+          sh_checker_comment: true
+          # sh_checker_exclude: 'vendor/** tests/fixtures/**'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # SHELLCHECK_OPTS: "-e SC1091"
+          # SHFMT_OPTS: "-i 2 -ci"
+```
 
-(venv) [trent@archlinux QEC]$
+<details>
+<summary><b>Customize it without crying</b></summary>
 
-4. Install Dependencies
-pip install -r requirements.txt
+* **Only lint a folder**
 
-5. Deactivate When Done
-deactivate
+  ```yaml
+  with:
+    path: "scripts,deploy.sh"
+  ```
+* **Exclude generated stuff**
 
+  ```yaml
+  with:
+    sh_checker_exclude: "vendor/** build/**"
+  ```
+* **Make ShellCheck chill about sourcing**
 
-Summary
+  ```yaml
+  env:
+    SHELLCHECK_OPTS: "-e SC1091"
+  ```
+* **Formatting knobs**
 
-sudo pacman -S python-virtualenv
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+  ```yaml
+  env:
+    SHFMT_OPTS: "-i 2 -ci"
+  ```
 
+</details>
 
-This workflow ensures full project isolation and avoids PEP 668: externally-managed-environment errors.
+> **Meme mode:**
+> “CI failed.” — Good news. That’s cheaper than prod failing.
 
-⚖️ Legal & Ethics (Prick with Purpose)
+---
 
-TCPA-Compliant: Manual callbacks only, verified unsolicited spam via Android APIs + QSOLKCB hashes.
+## 🆘 Troubleshooting (real talk)
 
-Entertainment Only: Roast responsibly. All burns are humor, not harassment.
+* **“No package manager detected”** → Unsupported distro/base image. Add a new case in `detect_pkg_mgr()` + wiring in `install_packages()`.
+* **Permission denied** → Use `sudo` (Linux) or ensure you can write `/etc` for tuning bits.
+* **Network failures** → We only download when reachability checks pass. Fix the network or re-run later.
+* **CUDA not found** → `lspci` isn’t always available in containers. Force GPU build:
 
-Privacy: On-device inference only — no server data slurping.
+  ```bash
+  has_nvidia=1 ./fullstack.sh
+  ```
 
-🤝 Contribute
+---
 
-Fork and add your meme burns (e.g. “Pajit script? Yeeted to Wojak town!”).
+## 🙌 Pro Tips
 
-Report bugs: “Quantum void detected — Doge viz unstable.”
+* **Idempotent runs**: Safe to re-run; it’ll skip what’s already set up.
+* **Lock your env**: Commit `qec_env_<os>.yaml` to keep the team in sync.
+* **Feature flags**: Wrap optional sections in simple `ENABLE_*` env checks if you want more toggles.
+* **Secrets**: CI uses `GITHUB_TOKEN` for comments — no extra secrets needed.
 
-Collab: DM @EmergentMonk or apply for invite to QSOLKCB.
+---
 
-📈 Roadmap
+## 🧪 Local Dev Niceties
 
-Q4 2025 – Full S23 app (Kivy build) + Snake Easter Egg 🐍
+**Pre-commit hook** (keeps CI green by default):
 
-2026 – Meme NFT marketplace for roast recordings
+```yaml
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/koalaman/shellcheck
+    rev: v0.10.0
+    hooks:
+      - id: shellcheck
+        args: [--severity=style]
+  - repo: https://github.com/mvdan/sh
+    rev: v3.7.0
+    hooks:
+      - id: shfmt
+        args: [-i, "2", -ci]
+```
 
-Beyond – Laser-kernel VoIP for global scammer entanglement
+```bash
+pipx install pre-commit || pip install pre-commit
+pre-commit install
+```
 
-QSOLKCB: Much wow, such secure, very prank. 😎🔮🐶
-Powered by EmergentMonk & the #fcukscammers collective.
-Last updated: October 24 2025
+---
+
+## 📝 Changelog Seeds
+
+* feat(script): add OS/arch-aware Miniforge installer
+* feat(audio): PipeWire/JACK installs per-distro
+* feat(ml): auto-detect NVIDIA → choose PyTorch CUDA/CPU
+* chore(ci): add ShellCheck + shfmt action with PR comments
+* perf(shell): prefer built-ins over external commands
+* docs: meme-powered README that your PM will actually read
+
+---
+
+## 🧾 License
+
+MIT. Because life’s too short for weird licenses.
+
+---
+
+> **Final meme:**
+> *You run `./fullstack.sh` once.*
+> Your future self from three laptops ahead appears:
+> “I’m here to say thanks.”
