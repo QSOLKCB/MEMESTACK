@@ -1,0 +1,40 @@
+name: Shell Lint
+
+# Lint all shell scripts with ShellCheck and shfmt on every push or pull request.
+# This workflow uses the luizm/action-sh-checker GitHub Action, which combines
+# ShellCheck (for static analysis) and shfmt (for formatting) into one simple
+# step.  It will fail the job if issues are found, helping to enforce
+# standards-compliant, clean Bash code.  The `sh_checker_comment` option adds
+# annotations to pull requests with inline suggestions.
+
+on:
+  push:
+    # Only run when shell scripts change to keep builds fast.  Adjust
+    # paths as needed to lint other files.
+    paths:
+      - '**.sh'
+  pull_request:
+    paths:
+      - '**.sh'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run shell and format checks
+        uses: luizm/action-sh-checker@master
+        env:
+          # Required by the action to post comments back to PRs.  GitHub
+          # automatically populates this secret in all workflows.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Enable commenting on pull requests for easier review of lint
+          # warnings.  Set to false to disable inline comments.
+          sh_checker_comment: true
+          # Example: exclude vendor folders or generated scripts from
+          # linting by specifying relative paths.  Remove or edit as
+          # necessary.
+          # sh_checker_exclude: 'vendor/**'
